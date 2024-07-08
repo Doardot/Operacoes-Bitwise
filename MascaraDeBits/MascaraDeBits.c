@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Função para extrair bits específicos de um número
 unsigned char extract_bits(unsigned char num, int start, int length)
 {
     unsigned char mask = (1 << length) - 1; // Cria uma máscara com 'length' bits de 1
@@ -27,7 +26,6 @@ int main()
         return 1;
     }
 
-    // Extração de bits diretamente na função main
     unsigned char result = extract_bits(num, start, length);
     printf("Numero: %d, Inicio: %d, Comprimento: %d, Resultado: %d\n",
            num, start, length, result);
