@@ -32,7 +32,7 @@ int check_permission(unsigned char flags, unsigned char perm)
 // Função para imprimir as permissões
 void print_permissions(unsigned char flags)
 {
-    printf("Permissões atuais: ");
+    printf("Permissoes atuais: ");
     if (flags & PERM_READ)
         printf("READ ");
     if (flags & PERM_WRITE)
@@ -104,27 +104,27 @@ void run_test()
     set_permission(&permissions, PERM_READ);
     set_permission(&permissions, PERM_WRITE);
     set_permission(&permissions, PERM_EXECUTE);
-    printf("Após adicionar READ, WRITE e EXECUTE:\n");
+    printf("Apos adicionar READ, WRITE e EXECUTE:\n");
     print_permissions(permissions);
 
     // Salvando permissões no arquivo
     if (save_permissions(filename, permissions) == 0)
     {
-        printf("Permissões salvas com sucesso.\n");
+        printf("Permissoes salvas com sucesso.\n");
     }
     else
     {
-        printf("Falha ao salvar permissões.\n");
+        printf("Falha ao salvar permissoes.\n");
     }
 
     // Carregando permissões do arquivo
     permissions = load_permissions(filename);
-    printf("Permissões carregadas do arquivo:\n");
+    printf("Permissoes carregadas do arquivo:\n");
     print_permissions(permissions);
 
     // Removendo a permissão de escrita
     clear_permission(&permissions, PERM_WRITE);
-    printf("Após remover WRITE:\n");
+    printf("Apos remover WRITE:\n");
     print_permissions(permissions);
 
     // Tentando salvar permissões no arquivo sem permissão de escrita
@@ -132,22 +132,22 @@ void run_test()
     {
         if (save_permissions(filename, permissions) == 0)
         {
-            printf("Permissões salvas com sucesso.\n");
+            printf("Permissoes salvas com sucesso.\n");
         }
         else
         {
-            printf("Falha ao salvar permissões.\n");
+            printf("Falha ao salvar permissoes.\n");
         }
     }
     else
     {
-        printf("Permissão de escrita não concedida. Não é possível salvar o arquivo.\n");
+        printf("Permissao de escrita nao concedida. Nao e possivel salvar o arquivo.\n");
     }
 
     // Tentando escrever uma mensagem no arquivo sem permissão de escrita
     if (check_permission(permissions, PERM_WRITE))
     {
-        if (write_message(filename, "Esta é uma mensagem de teste.") == 0)
+        if (write_message(filename, "Esta eh uma mensagem de teste.") == 0)
         {
             printf("Mensagem escrita com sucesso.\n");
         }
@@ -158,12 +158,12 @@ void run_test()
     }
     else
     {
-        printf("Permissão de escrita não concedida. Não é possível escrever no arquivo.\n");
+        printf("Permissao de escrita nao concedida. Nao eh possivel escrever no arquivo.\n");
     }
 
     // Carregando permissões do arquivo novamente para verificação final
     permissions = load_permissions(filename);
-    printf("Permissões carregadas do arquivo (final):\n");
+    printf("Permissoes carregadas do arquivo (final):\n");
     print_permissions(permissions);
 }
 
