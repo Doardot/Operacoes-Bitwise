@@ -7,31 +7,30 @@ unsigned char extract_bits(unsigned char num, int start, int length)
     return (num >> start) & mask;           // Desloca o número para a direita e aplica a máscara
 }
 
-// Função para testar a extração de bits
-void test_extract_bits(unsigned char num, int start, int length, unsigned char expected)
-{
-    unsigned char result = extract_bits(num, start, length);
-    printf("Numero: %d, Inicio: %d, Comprimento: %d, Resultado: %d, Esperado: %d\n",
-           num, start, length, result, expected);
-    if (result == expected)
-    {
-        printf("Teste bem-sucedido!\n");
-    }
-    else
-    {
-        printf("Teste falhou.\n");
-    }
-}
-
 int main()
 {
-    // Testes com diferentes valores em decimal
-    test_extract_bits(171, 4, 4, 10);  // 1010 1011 -> 1010 (esperado 10)
-    test_extract_bits(255, 0, 8, 255); // 1111 1111 -> 1111 1111 (esperado 255)
-    test_extract_bits(195, 6, 2, 3);   // 1100 0011 -> 11 (esperado 3)
-    test_extract_bits(120, 3, 3, 7);   // 0111 1000 -> 111 (esperado 7)
-    test_extract_bits(15, 0, 4, 15);   // 0000 1111 -> 1111 (esperado 15)
-    test_extract_bits(165, 1, 3, 2);   // 1010 0101 -> 010 (esperado 2)
+    unsigned char num;
+    int start, length;
+
+    printf("Insira um numero (0-255): ");
+    scanf("%hhu", &num);
+
+    printf("Insira a posicao inicial dos bits a serem extraidos (0-7): ");
+    scanf("%d", &start);
+
+    printf("Insira o comprimento dos bits a serem extraidos (1-8): ");
+    scanf("%d", &length);
+
+    if (start < 0 || start > 7 || length < 1 || length > 8 || (start + length) > 8)
+    {
+        printf("Valores de entrada invalidos.\n");
+        return 1;
+    }
+
+    // Extração de bits diretamente na função main
+    unsigned char result = extract_bits(num, start, length);
+    printf("Numero: %d, Inicio: %d, Comprimento: %d, Resultado: %d\n",
+           num, start, length, result);
 
     return 0;
 }
