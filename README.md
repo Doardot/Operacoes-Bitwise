@@ -1,4 +1,4 @@
-Trabalho realizado por:
+# Autores
 
 Eduardo Tavares
 
